@@ -12,5 +12,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// Testing version control
