@@ -28,7 +28,7 @@ public class SearchController : ControllerBase
             _ => query.Sort(x => x.Ascending(a => a.AuctionEnd))
         };
 
-        if (!string.IsNullOrEmpty(searchParams.FilterBy)) //TODO : It shouldn't require this statement to work?
+        if (!string.IsNullOrEmpty(searchParams.FilterBy)) //TODO : It shouldn't require this statement to work? --> Problem with Seed data?
         {
             query = searchParams.FilterBy switch
             {
