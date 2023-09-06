@@ -15,7 +15,9 @@ export default function Listings() {
   const params = useParamsStore(state => ({ //TODO: is this declarition deprecated or error in syntax?
     pageNumber: state.pageNumber,
     pageSize: state.pageSize,
-    searchTerm: state.searchTerm
+    searchTerm: state.searchTerm,
+    orderBy: state.orderBy,
+    filterBy: state.filterBy
   }), shallow) //This could be a problem
 
   const setParams = useParamsStore(state => state.setParams)
