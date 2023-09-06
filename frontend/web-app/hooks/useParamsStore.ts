@@ -6,10 +6,6 @@ type State = {
     pageCount: number
     searchTerm: string
     searchValue: string
-    orderBy: string
-    filterBy: string
-    seller?: string
-    winner?: string
 }
 
 type Actions = {
@@ -23,11 +19,7 @@ const initialState: State = {
     pageSize: 12,
     pageCount: 1,
     searchTerm: '',
-    searchValue: '',
-    orderBy: 'make',
-    filterBy: 'live',
-    seller: undefined,
-    winner: undefined
+    searchValue: ''
 }
 
 export const useParamsStore = create<State & Actions>()((set) => ({

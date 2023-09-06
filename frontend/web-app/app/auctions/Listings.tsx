@@ -7,16 +7,17 @@ import AppPagination from '../components/AppPagination';
 import { getData } from '../actions/auctionActions';
 import Filters from './Filters';
 import { useParamsStore } from '@/hooks/useParamsStore';
-import {shallow} from 'zustand/shallow';
 import qs from 'query-string'
+import { shallow } from 'zustand/shallow'; //see line 19
 
 export default function Listings() {
   const [data, setData] = useState<PagedResult<Auction>>();
-  const params = useParamsStore(state => ({
+  const params = useParamsStore(state => ({ //TODO: is this declarition deprecated or error in syntax?
     pageNumber: state.pageNumber,
     pageSize: state.pageSize,
-    searchTerm: state.searchTerm,
-  }), shallow)
+    searchTerm: state.searchTerm
+  }), shallow) //This could be a problem
+
   const setParams = useParamsStore(state => state.setParams)
   const url = qs.stringifyUrl({url: '', query: params})
 
