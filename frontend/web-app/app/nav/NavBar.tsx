@@ -2,6 +2,7 @@ import React from 'react'
 import {AiOutlineCar} from 'react-icons/ai'
 import Search from './Search'
 import Logo from './Logo'
+import LoginButton from './LoginButton'
 
 export default function NavBar() {
   return (
@@ -10,7 +11,7 @@ export default function NavBar() {
     '>
       <Logo />
       <Search />
-      <div>Login</div>
+      <LoginButton />
     </header>
   )
 }
