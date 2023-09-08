@@ -1,14 +1,15 @@
 # Project: Auction App 
 
+Microservices based web app. 
+
 Made by: Aapo Soukkio
 
 ***
 
 
 ## About the project 
-### The documentation will be updated before 10th of Sebtember!
 Microservices based web app. 
-The live demo will be available around 10th of Sebtember.
+The live demo will be available around 15th of Sebtember.
 
 
 ## Technologies Used
@@ -18,6 +19,18 @@ The live demo will be available around 10th of Sebtember.
 - Service to service communication using RabbitMQ and gRPC
 - Docker
 - IdentityServer
+
+## Application architecture
+
+![Alt text](img/App_Architecture.PNG)
+
+### Key points about the architecture
+
+- Project utilizes [microservices architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices)
+- The identity service is a distinct component of the application architecture designed to avoid dependency on cloud services.
+- The gateway is aldo a separate service that offers a single access point for client application to connect to backend services.
+
+
 
 ## About the data
 
@@ -46,6 +59,6 @@ Coming soon...
 
 ## Helpful Links
 
-> **Following material will help to understand this project and learn more about Blazor WASM.**
+> **Following material will help to understand this project and learn more about conscepts used in this project
 
-Coming soon...
+- [Microservices architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices)
