@@ -28,7 +28,7 @@ The live demo will be available around 15th of Sebtember.
 
 - Project utilizes [microservices architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices)
 - The identity service is a distinct component of the application architecture designed to avoid dependency on cloud services.
-- The gateway is aldo a separate service that offers a single access point for client application to connect to backend services.
+- The gateway is also a separate service that offers a single access point for client application to connect to backend services.
 
 
 
@@ -62,3 +62,4 @@ Coming soon...
 > **Following material will help to understand this project and learn more about conscepts used in this project
 
 - [Microservices architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices)
+- [NextJS](https://nextjs.org/)
