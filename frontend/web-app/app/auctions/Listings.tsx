@@ -10,6 +10,7 @@ import { useParamsStore } from '@/hooks/useParamsStore';
 import qs from 'query-string'
 import { shallow } from 'zustand/shallow'; //see line 19
 import EmptyFilter from '../components/EmptyFilter';
+import { stat } from 'fs';
 
 export default function Listings() {
   const [data, setData] = useState<PagedResult<Auction>>();
@@ -18,7 +19,9 @@ export default function Listings() {
     pageSize: state.pageSize,
     searchTerm: state.searchTerm,
     orderBy: state.orderBy,
-    filterBy: state.filterBy
+    filterBy: state.filterBy,
+    seller: state.seller,
+    winner: state.winner
   }), shallow) //This could be a problem
 
   const setParams = useParamsStore(state => state.setParams)
