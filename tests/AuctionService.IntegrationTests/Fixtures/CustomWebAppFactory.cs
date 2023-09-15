@@ -22,8 +22,6 @@ namespace AuctionService.IntegrationTests.Fixtures
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-
-
             builder.ConfigureTestServices(services =>
             {
                 services.RemoveDbContext<AuctionDbContext>();
