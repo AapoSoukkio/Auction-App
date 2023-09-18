@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BiddingService.DTOs;
 using BiddingService.Models;
+using Contracts;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -71,7 +72,7 @@ namespace BiddingService.Controllers
 
             await DB.SaveAsync(bid);
 
-            //await _publishEndpoint.Publish(_mapper.Map<BidPlaced>(bid));
+            await _publishEndpoint.Publish(_mapper.Map<BidPlaced>(bid));
 
             return Ok(_mapper.Map<BidDto>(bid));
         }
