@@ -1,4 +1,6 @@
-﻿using BiddingService.Models;
+﻿using AutoMapper;
+using BiddingService.DTOs;
+using BiddingService.Models;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,28 +12,24 @@ namespace BiddingService.Controllers
     [Route("api/[controller]")]
     public class BidsController : ControllerBase
     {
-        //private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
         private readonly IPublishEndpoint _publishEndpoint;
         //private readonly GrpcAuctionClient _grpcClient;
 
-        //public BidsController(IMapper mapper, IPublishEndpoint publishEndpoint,
-        //    GrpcAuctionClient grpcClient)
-        //{
-        //    _mapper = mapper;
-        //    _publishEndpoint = publishEndpoint;
-        //    _grpcClient = grpcClient;
-        //}
+        public BidsController(IMapper mapper, IPublishEndpoint publishEndpoint)
+        {
+            _mapper = mapper;
+            _publishEndpoint = publishEndpoint;
+        }
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult<Bid>> PlaceBid(string auctionId, int amount)
+        public async Task<ActionResult<BidDto>> PlaceBid(string auctionId, int amount)
         {
             var auction = await DB.Find<Auction>().OneAsync(auctionId);
 
             if (auction == null)
             {
-                //auction = _grpcClient.GetAuction(auctionId);
-
                 if (auction == null) return BadRequest("Cannot accept bids on this auction at this time");
             }
 
@@ -75,11 +73,11 @@ namespace BiddingService.Controllers
 
             //await _publishEndpoint.Publish(_mapper.Map<BidPlaced>(bid));
 
-            return Ok((bid));
+            return Ok(_mapper.Map<BidDto>(bid));
         }
 
         [HttpGet("{auctionId}")]
-        public async Task<ActionResult<List<Bid>>> GetBidsForAuction(string auctionId)
+        public async Task<ActionResult<List<BidDto>>> GetBidsForAuction(string auctionId)
         {
             var bids = await DB.Find<Bid>()
                 .Match(a => a.AuctionId == auctionId)
@@ -87,8 +85,7 @@ namespace BiddingService.Controllers
                 .ExecuteAsync();
 
 
-            return bids;
-            //return bids.Select(_mapper.Map<BidDto>).ToList();
+            return bids.Select(_mapper.Map<BidDto>).ToList();
         }
     }
 }
