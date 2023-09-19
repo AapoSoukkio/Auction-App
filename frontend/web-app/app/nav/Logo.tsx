@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import React from 'react'
 import { AiOutlineCar } from 'react-icons/ai'
 
-export default function logo() {
+export default function Logo() {
     const router = useRouter();
     const pathName = usePathname();
     const reset = useParamsStore(state => state.reset);
