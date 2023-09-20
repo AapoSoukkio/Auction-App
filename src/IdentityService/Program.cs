@@ -3,8 +3,6 @@ using Npgsql;
 using Polly;
 using Serilog;
 
-// Have to make change in Identity service in order to test GitHub actions --> REMOVE THIS LINE 
-
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateBootstrapLogger();
