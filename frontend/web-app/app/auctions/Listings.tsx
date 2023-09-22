@@ -28,23 +28,22 @@ export default function Listings() {
         pageCount: state.pageCount
     }), shallow);
     const setData = useAuctionStore(state => state.setData);
-
+    
     const setParams = useParamsStore(state => state.setParams);
     const url = qs.stringifyUrl({ url: '', query: params })
-
+    
     function setPageNumber(pageNumber: number) {
         setParams({ pageNumber })
     }
-
+    
     useEffect(() => {
         getData(url).then(data => {
             setData(data);
             setLoading(false);
         })
     }, [url, setData])
-
+    console.log("data.auctions.lenght = " + data.auctions.length);
     if (loading) return <h3>Loading...</h3>
-
     return (
         <>
             <Filters />
@@ -65,6 +64,5 @@ export default function Listings() {
             )}
 
         </>
-
     )
 }
