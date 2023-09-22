@@ -5,6 +5,12 @@ metadata:
   labels:
     name: ingress-svc
 spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - app.auctions.com
+      - api.auctions.com
+      secretName: auctions-app-tls
   rules:
   - host: app.auctions.com
     http:
@@ -14,7 +20,7 @@ spec:
         backend:
           service:
             name: webapp-clusterip
-            port: 
+            port:
               number: 3000
   - host: api.auctions.com
     http:
