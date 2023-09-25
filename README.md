@@ -9,7 +9,7 @@ Made by: Aapo Soukkio
 
 ## About the project 
 Microservices based web app. 
-The live demo will be available around 15th of Sebtember.
+Live demo publication postponed. New release date October 6!
 
 
 ## Technologies Used
@@ -41,8 +41,6 @@ Coming soon...
 Coming soon...
 
 ## Features
-
-Coming soon...
 
 ## How to run the project
 
