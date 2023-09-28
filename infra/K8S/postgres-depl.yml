@@ -18,7 +18,7 @@ spec:
           - name: POSTGRES_PASSWORD
             value: postgrespw
         ports:
-        - containerPort: 5423
+        - containerPort: 5432
         volumeMounts: 
         - mountPath: /var/data/postgres
           name: postgresdata
