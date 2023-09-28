@@ -2,14 +2,12 @@
 
 Microservices based web app. 
 
-Made by: Aapo Soukkio
-
 ***
 
 
 ## About the project 
 Microservices based web app. 
-Live demo publication postponed. New release date October 6!
+Live demo publication postponed. New release date October 13th!
 
 
 ## Technologies Used
@@ -17,8 +15,21 @@ Live demo publication postponed. New release date October 6!
 - C# and .NET Core 7 for the backend
 - Next.js for the client app
 - Service to service communication using RabbitMQ and gRPC
-- Docker
 - IdentityServer
+- Docker
+- Kubernetes cluster
+- CI/CD workflows using GitHub actions
+
+## Features
+
+- Authentication (Register and Login)
+- Live bidding
+- Notifigations (eg. when new auction is published)
+- Create new items for auction (when logged in)
+- Delete and update your own items 
+- Search for specifig item in auction
+- Filter results
+- Pagination 
 
 ## Application architecture
 
@@ -32,15 +43,32 @@ Live demo publication postponed. New release date October 6!
 
 
 
-## About the data
+## Services
+
+Below there is brief explanation what responsibilities each of the service has in part of the whole microservices project.
+
+### Auction service
+
+Basic web-API which primary purpose is to manage auctions for various items. It's responsible for handling the creation, management, and deletion of auctions for items. It communicates with other services through RabbitMQ and emits events to notify other components of important changes in auction status or item details.
+
+**Infrastructure**
+- .Net Web API
+- Postgres DB
+- Entity Framework ORM
+- Service Bus - RabbitMQ
+
+**API Endpoints**
+
+| POST       | PUT          | DELETE       | GET           | GET               |
+|------------|--------------|--------------|---------------|-------------------|
+| api/auctions     | api/auctions/:id | api/auctions/:id | api/auctions | api/auctions/:id |
+| Create Item | Update auction  | Delete auction  | Get auctions | Get auction by id |
+| Auth       | Auth         | Auth         | Anon          | Anon              |
+
+
+### Search service
 
 Coming soon...
-
-### Database model 
-
-Coming soon...
-
-## Features
 
 ## How to run the project
 
@@ -52,7 +80,7 @@ Coming soon...
 
 ## Other notes
 
-Coming soon...
+Complexity in this project is microservices architecture in itself. Every service has relatively simple codebase
 
 
 ## Helpful Links
